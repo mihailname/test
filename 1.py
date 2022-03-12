@@ -12,7 +12,8 @@ print("GRAB - Started")
 
 @client.on(events.NewMessage(chats=channels))
 async def handler(event):
-    if event.message.text:await client.send_message(my_channel_id, event.message)
+    if event.message.text:
+        await client.send_message(my_channel_id, event.message)
     
 @client.on(events.Album(chats=channels))
 async def handler(event):
