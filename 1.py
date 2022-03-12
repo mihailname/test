@@ -11,7 +11,8 @@ client = TelegramClient('myGrab', api_id, api_hash)
 print("GRAB - Started")
 
 
-@client.on(events.Album(chats=channels))
+
+@client.on(events.NewMessage.Album(chats=channels))
 async def handler(event):
     await client.send_message(my_channel_id, file=event.messages, message=event.original_update.message.message,)
  
