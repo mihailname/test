@@ -11,10 +11,10 @@ client = TelegramClient('myGrab', api_id, api_hash)
 print("GRAB - Started")
 
 
+@client.on(events.NewMessage(chats=channels))
+async def my_event_handler(event):
+    if event.message:
+        await client.send_message(my_channel_id, file=event.messages, message=event.original_update.message.message,)
 
-@client.on(events.NewMessage.Album(chats=channels))
-async def handler(event):
-    await client.send_message(my_channel_id, file=event.messages, message=event.original_update.message.message,)
- 
 client.start()
 client.run_until_disconnected()
